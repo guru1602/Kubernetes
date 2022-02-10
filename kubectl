@@ -1,0 +1,15 @@
+kubectl apply -f deployment.yml
+kubectl apply -f sa.yml  
+kubectl logs -l app=nginx-deployment-59c47bcc98-kcch8 -c aws-cli
+
+kubectl annotate serviceaccount -n infra test-sa eks.amazonaws.com/role-arn=role arn
+kubectl create namespace name
+kubectl get pods -n namespace
+kubectl exec -n namespace deployment/pod  env | grep AWS
+kubectl delete pod podname -n namespace
+kubectl delete pods --all -n namespace
+kubectl scale deployment deploymentname --replicas=0 -n namespace
+kubectl describe pod podname -n namespace
+kubectl get endpoints svc-name -n namespace
+
+aws eks --region eu-west-2 update-kubeconfig --name dev-eks-cluster
